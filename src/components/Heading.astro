@@ -1,12 +1,12 @@
 ---
 import Social from "./Social.astro";
-import Avatar from "../components/Avatar.astro";
+import Portrait from "../components/Portrait.astro";
 ---
 <div class="grid">
 <div class="heading-container">
   <a href="/">
     <span class="sr-only">Home</span>
-    <Avatar />
+    <Portrait />
   </a>
   <div class="social-icons">
     <Social />
@@ -19,6 +19,7 @@ import Avatar from "../components/Avatar.astro";
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
+    align-items: center;
   }
   .social-icons {
     display: flex;
