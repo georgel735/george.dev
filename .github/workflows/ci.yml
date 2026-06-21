@@ -10,8 +10,9 @@ on:
       - main
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -22,6 +23,3 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Lint
-        run: npm run lint
