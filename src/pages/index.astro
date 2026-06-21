@@ -2,9 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import Portrait from "../components/Portrait.astro";
 import Heading from "../components/Heading.astro";
+import Card from "../components/Card.astro";
 
 
 // Project Components
+import Hyperion from "../components/hyperion/Hyperion.astro";
 
 ---
 
@@ -39,6 +41,19 @@ import Heading from "../components/Heading.astro";
       <h2 class="text-3xl mt-6 font-medium lg:text-4xl tracking-tight text-primary text-white mb-2">
         Projects
       </h2>
+
+      <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Hyperion Feiyue Camp -->
+        <div>
+          <Card
+            href="hyperion"
+            title="Hyperion"
+            body="Reprogramming Hyperion to compete at the Steel City Showdown. Tank Drive, Flywheel Shooter, Over-The-Bumper Intake and Magazine."
+            tags="FRC, Software Engineering, Autonomy, PID, Java"
+          >
+            <Hyperion />
+          </Card>
+        </div>
 
       <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
   </div>
