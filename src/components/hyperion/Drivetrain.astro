@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import Drivetrain from '../../assets/Hyperion/drivetrain.jpg';
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Drivetrain}
+    alt="First Project Ever!"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>

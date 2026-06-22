@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HyperionImage from "../components/hyperion/Hyperion.astro";
+import Limelight from "../components/hyperion/Limelight.astro";
+import Drivetrain from "../components/hyperion/Drivetrain.astro";
 ---
 
 <Layout title="Hyperion | George Lin">
@@ -19,10 +21,61 @@ import HyperionImage from "../components/hyperion/Hyperion.astro";
     <br />
 
     <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
-      Writeup Coming Soon
+      Summary
     </h2>
 
+    <p class="text-white">
+      Hyperion was the first project I ever worked on. It was an FRC robot that I had one week to program completely from scratch. I had no prior experience with robotics, Java, or PID control.
+    </p>
     <br />
+
+    <p class ="text-white">
+      The first subsystem I programmed was the drivetrain. Hyperion featured a tank drive with 4 Falcon 500 motors and TALON SRX motor controllers. I implemented a basic arcade drive and then added a simple PID controller in code to help with optimized driving. 
+    </p>
+    <br />
+
+    <Drivetrain />
+    <br />
+
+    <p class="text-white">
+      The next subsystem I programmed was the intake and magazine system. Hyperion had a four-bar over-the-bumper intake powered by a pneumatic piston. The balls were intook by powered rollers with compliant wheels and driven by a belt system. For this system, I programmed the piston to extend and retract the intake. At the same time the piston would extend, the rollers would start spinning to intake the balls.
+      The intake leads into a passive polycarb funnel that feeds into the magazine, which is a series of powered and passive rollers. The whole magazine system is powered chain, a versa planetary gearbox, and a BAG motor. The magazine system was programmed to pull balls up to the shooter, where it was stopped by kicker wheels until the shooter was ready to fire. 
+    </p>
+    <br />
+
+    <p class="text-white">
+      From the magazine, the balls are fed into the shooter. The shooter had a hood with a powered roller attached to it and a flywheel shooter powered by two Falcon 500 motors, and the whole system was driven by belt and pulley. 
+      The shooter utilized a limelight 2 to track the target and distance. The limelight 2 utilized a retroreflective tape target that was placed on the goal. I color thresholded and contour filtered the limelight to detect the target. 
+      I used the limelight's distance measurement within a hashmap to determine the optimal flywheel speed. Within the hashmap, I obtained optimal values by shooting from different distances around the field and recording the optimal flywheel rpm for each distance. I then used a PID controller to spin the wheel up to speed and shoot once it was within a specified error threshold. While the wheel could shoot up to 2500 rpm, I still set the error threshold to below 50 rpm. 
+    </p>
+    <br />
+
+    <Limelight />
+    <br />
+
+    <p class="text-white">
+    Last things I programmed were the climber and control system. The climber consisted of two telescoping arms on each side powered by a Falcon 500 motor and a modified gearbox. It was pretty simple to program, as I just had to extend and retract the arms. 
+    The control system wasn't too difficult either. I bounded the buttons of an Xbox controller to different commands. I also programmed autonomous paths that started from 3 different spots on the field, each shooting two balls at the start, and then "parking" on a balance station. I used an application called PathPlanner to create paths and implement them into code. 
+    Lastly, I implemented a simple dashboard using Shuffleboard to display the limelight's camera feed, shooter speed, autonomous chooser, and other information rebgarding performance.
+    </p> 
+    <br />
+
+    <p class="text-white">
+    Overall, this project was an incredible opportunity for me to learn about programming, robotics, and engineering as a whole. Shoutout David, Ash, Anuva, Feiyue, and everyone who helped me with this project. 
+    <p />
+    <br />
+
+    <p class="text-white">
+    Watch me compete and win with Hyperion at my first ever competiton here → <a href="https://www.youtube.com/live/B6xetJKwipA" class="text-blue-500 hover:underline">Steel City Showdown</a>
+    </p>
+    <br />
+    
+    <video class="w-full border border-black" autoplay muted loop playsinline controls>
+    <source src="/videos/hyperion.mp4" type="video/mp4" />
+    </video>
+
+    <br />
+
   </div>
 </Layout>
 
