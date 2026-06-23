@@ -120,7 +120,22 @@ import Aoide from "../components/aoide/Aoide.astro";
     </h2>
 
     <p class = "text-white">
+      Aoide was coded in Java through IntelliJ. To improve maintainability and logging, we decided to use an IO layer architecture. Hardware interactions are isolated in IO classes, while subsystem classes contain control logic. This separation allowed for AdvantageKit logging, simulation capabilities, and simpler hardware migrations throughout the season. 
+      Throughout the season, I set up the baseline for these IO/subsystem classes. I created them, added functions to log data, carry out commands, etc.
+    </p>
+    <br />
 
+    <p class = "text-white">
+      The most complicated system I helped on was the swerve drive. Probably the most complex thing I worked on was proportional velocity control for the swerve drivetrain. While the implementation itself was straightforward, understanding the underlying control concepts was a little tricky. Rather than using linear joystick scaling, we implemented cubic scaling to improve low-speed precision while maintaining full-speed capability at maximum joystick deflection.
+      I also contributed to drivetrain deadbanding, feedforward characterization, and PID tuning. We used WPILib SysId to model drivetrain behavior and determine feedforward gains, then tuned PID controllers through telemetry analysis to improve overall control performance.
+      To maintain accurate field localization, the robot used swerve odometry derived from wheel encoder and gyro measurements. To reduce accumulated drift, AprilTag-based vision measurements were fused with odometry through a pose estimator, providing accurate field-relative localization.
+    </p>
+    <br />
+
+    <p class = "text-white">
+      The arm is probably the most complicated algorithm on the robot. While I didn't program this, I can explain the overarching ideas. The arm subsystem uses a state machine–based control system where each of the 11 robot modes corresponds to a specific behavior with predefined arm and wrist setpoints. 
+      The active state determines what angles the arm should move to, and the system continuously updates motor commands based on that state. The transitions between actions became more predictable and easier to manage because we turned an otherwise complex behavior into a set of discrete behaviors.
+      Each state also applies its own motion rules, such as velocity limits and safety constraints, to ensure stable and collision-free movement between the independently-moving shoulder and the dependently-moving wrist. Lastly, a climber lock input acts as a safety interlock between subsystems, overriding normal state changes when the climber is active so the arm prioritizes climbing-related positions and avoids configurations that could interfere with the climber.
     </p>
 
   </div>
