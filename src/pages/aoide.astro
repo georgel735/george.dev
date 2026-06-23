@@ -1,0 +1,122 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Aoide from "../components/aoide/Aoide.astro";
+---
+
+<Layout title="Aoide | George Lin">
+  <div class="max-w-screen-md m-auto p-4 my-4 antialiased">
+    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl text-white">
+      FIRST<br />
+      <span class="text-gradient">Aoide</span>
+    </h1>
+
+    <Aoide />
+
+    <p class="text-white">
+      <i>Aoide is 4467's robot for the 2024 FIRST Robotics Competition, Crescendo.</i>
+    </p>
+
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Summary
+    </h2>
+
+    <p class="text-white">
+      Aoide was the robot I worked on during my rookie season of FRC. I held roles in software engineering, mechanical fabrication and design, and some electrical wiring. 
+      Being that it was my first season, there was a lot of learning through trial and error, but by the end of the season, I was able to have a tangible impact on the team and the robot. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Aoide was designed to be a robust "everything" robot with a low COG (8 in. high to be exact). It could play into every major game objective and strategy. For example, it could play a defensive role with the strudy robot design. 
+      It could also play a passing or scoring role on offense with the ability to shoot cross field, into the goal, and amp. Not to mention, it could climb and score into the trap, which is considered one of the most difficult game objectives of all time.
+      On the programming side of things, Aoide was programmed in Java and utilized an IO framework to allow for live data collection, future analysis, and simulation through AdvantageKit. It had 6 distinct subsystems, each with their own commands. It also had a near limitless amount of autonomous paths thanks to Choreo path generation and Pathplanner path splicing.
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Aoide's build team consisted of around 10 students and 5 mentors. She was designed and built in around 7 weeks. She was programmed in about 3 weeks. She was expanded on through continuous iteration up until the final competiton through. 
+      While the robot didn't perform to the teams' expectations (Qualifying for the World Championship), it was still the top performing robot in the Western Pennsylvania region according to Expected Points Added advanced metric and it won awards at both competitons it competed at. 
+    </p>
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Mechanical Notebook
+    </h2>
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Drivetrain
+    </h3>
+
+    <p class = "text-white">
+      Aoide's drivetrain used L3 gear ratio Mk4i modules with Kraken X60s as drive motors and Falcon 500s as azimuth motors. 
+      We originally had L3+ gear ratio but switched them out in favor of L3. We did this because we realized we would need more torque and acceleration as defense and collisions were a big part of this year's game. 
+      Each swerve module had a built-in encoder. Additionally, we used a Pigeon 2 IMU and 2 cameras mounted on to modules to assist with localization. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Intake
+    </h3>
+
+    <p class = "text-white">
+        We had an Under-The-Bumper intake attached to the drivetrain frame. It had three deadaxle rollers, two polycarb with silicon tubing for initial contact and a third carbon fiber for centering, powered by a 1:1 kraken and driven through a belt-pulley system. 
+        On each side, there were two 3" compliant wheels for centering. These were powered by a 5:1 Kraken driven through a different belt-pulley system. 
+        The intake was an instagrab handoff straight into the shooter. The intake plates were thickened throughout the season, all the way up to 1/4 aluminum because they kept getting bent from all the collisions. Even after the change, they still got bent lol. Lastly, we had another camera mounted to the intake for further vision assistance. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Shooter
+    </h3>
+
+    <p class = "text-white">
+        Aoide's shooter had two sets of polycarb + silicon rollers powered by a Kraken with a 1:5:1 ratio. The shooter used two sets of 4" urethane wheels with 1/2 in of compression to create spin. Both sides were individually powered by a Falcon 500. 
+        The shooter rotated around a MAXSpline and sprocket to shoot or pass at a variety of angles and position correctly to score into the amp. In late iterations, polycarb "horns" were added to the shooter to push open a trapdoor-like obstacle to enable scoring into the trap. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Arm
+    </h3>
+
+    <p class = "text-white">
+      The arm was a virtual four-bar, which featured two MAXSpline cross shafts to rotate the shoulder and wrist joints by chain and sprocket. 
+      The shoulder was powered by two Krakens in a custom 202.8:1 gearbox while the wrist was also powered by two Krakens but with a custom 152.1:1 gearbox. The arm pops up completely vertically for climbing and amp scoring.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Climber
+    </h3>
+
+    <p class = "text-white">
+      The climber was a custom telescoping tube design. Each tube was powered by a Kraken with a 36:1 Max Planetary gearbox. The entire elevator system was driven through a spool and rope mechanism. As the spool winds up, climber extends and vice versa. 
+      On each tube there were constant force springs to aid with lifting the stages of the climber as it lifted the hefty 125ish pound robot. Lastly, a custom slotted chain hook was what kept the robot secured firmly while climbing. 
+    </p>
+    <br />
+
+  </div>
+</Layout>
+
+<style>
+  .image-text-container {
+    display: flex;
+    align-items: top;
+    gap: 16px; /* Adjust space between image and text */
+    margin-bottom: 2rem; /* Adds spacing before the back button */
+  }
+
+  .side-image {
+    flex: 1 1 auto; /* Ensures the image takes only as much space as needed */
+    max-width: 400px; /* Adjust as necessary for your design */
+    height: auto;
+  }
+
+  .side-text {
+    flex: 2 1 auto; /* Gives the text more space */
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+</style>

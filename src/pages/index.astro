@@ -6,7 +6,8 @@ import Card from "../components/Card.astro";
 
 
 // Project Components
-import HyperionCover from "../components/hyperion/Hyperion.astro";
+import Hyperion from "../components/hyperion/Hyperion.astro";
+import Aoide from "../components/Aoide/Aoide.astro";
 
 ---
 
@@ -53,11 +54,24 @@ import HyperionCover from "../components/hyperion/Hyperion.astro";
             body="Reprogramming Hyperion to compete at the Steel City Showdown. Climber, Tank Drive, Flywheel Shooter, Over-The-Bumper Intake and Magazine."
             tags="FRC, Software Engineering, Autonomy, PID, Java"
           >
-            <HyperionCover />
+            <Hyperion />
           </Card>
         </div>
-
-      <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- Aoide -->
+        <div>
+          <Card
+            href="aoide"
+            title="Aoide"
+            body="Full-scale FRC project. Team #4467's 2024 Crescendo competition robot. Designed as an all-purpose robot, combining reliability, precision, and the ability to perform every major game objective."
+            tags="FRC, Software Engineering, Autonomy, PID, Java"
+          >
+            <Aoide />
+          </Card>
+        </div>
+        
+      </div>
+    </main>
   </div>
 </Layout>
 
