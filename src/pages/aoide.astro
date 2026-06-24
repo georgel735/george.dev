@@ -119,11 +119,19 @@ import Aoide from "../components/aoide/Aoide.astro";
       Programming Documentation
     </h2>
 
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      General Overview
+    </h3>
+
     <p class = "text-white">
-      Aoide was coded in Java through IntelliJ. To improve maintainability and logging, we decided to use an IO layer architecture. Hardware interactions are isolated in IO classes, while subsystem classes contain control logic. This separation allowed for AdvantageKit logging, simulation capabilities, and simpler hardware migrations throughout the season. 
+      Aoide was coded in Java through IntelliJ and used the Shuffleboard dashboard. To improve maintainability and logging, we decided to use an IO layer architecture. Hardware interactions are isolated in IO classes, while subsystem classes contain control logic. This separation allowed for AdvantageKit logging, simulation capabilities, and simpler hardware migrations throughout the season. 
       Throughout the season, I set up the baseline for these IO/subsystem classes. I created them, added functions to log data, carry out commands, etc.
     </p>
     <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Subsystems
+    </h3>
 
     <p class = "text-white">
       The most complicated system I helped on was the swerve drive. Probably the most complex thing I worked on was proportional velocity control for the swerve drivetrain. While the implementation itself was straightforward, understanding the underlying control concepts was a little tricky. Rather than using linear joystick scaling, we implemented cubic scaling to improve low-speed precision while maintaining full-speed capability at maximum joystick deflection.
@@ -133,9 +141,32 @@ import Aoide from "../components/aoide/Aoide.astro";
     <br />
 
     <p class = "text-white">
-      The arm is probably the most complicated algorithm on the robot. While I didn't program this, I can explain the overarching ideas. The arm subsystem uses a state machine–based control system where each of the 11 robot modes corresponds to a specific behavior with predefined arm and wrist setpoints. 
+      The arm is probably the most complicated algorithm on Aoide. While I didn't program this, I can explain the overarching ideas. The arm subsystem uses a state machine–based control system where each of the 11 robot modes corresponds to a specific behavior with predefined arm and wrist setpoints. 
       The active state determines what angles the arm should move to, and the system continuously updates motor commands based on that state. The transitions between actions became more predictable and easier to manage because we turned an otherwise complex behavior into a set of discrete behaviors.
       Each state also applies its own motion rules, such as velocity limits and safety constraints, to ensure stable and collision-free movement between the independently-moving shoulder and the dependently-moving wrist. Lastly, a climber lock input acts as a safety interlock between subsystems, overriding normal state changes when the climber is active so the arm prioritizes climbing-related positions and avoids configurations that could interfere with the climber.
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Our "aimbot" system combined vision, drivetrain alignment, and rpm control to improve scoring consistency. Using Aoide's estimated field position, the aimbot command calculated the required wrist angle and flywheel speeds based on the distance to the speaker. The wrist angle was determined using a polynomial curve fit generated from successful shot data, allowing the robot to automatically adjust its trajectory from different locations on the field.
+      Originally, the system relied on interpolation tables that mapped distance to wrist angles and flywheel RPMs. While functional, the interpolation-based approach produced inconsistent results while shooting. To improve reliability, the wrist angle calculation was replaced with a fitted equation and the shooter RPMs were simplified into several distance-based operating zones.
+      Before a note could be fired, the system verified three conditions: the flywheels had reached their target rpm, the drivetrain was aligned with the target within an acceptable angular error, and a TOF sensor confirmed that a note was present in the robot. All in all, this reduced wasted shots and increased accuracy. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      The last two subsystems I'm especially proud of because I programmed these by myself. The climber managed both climber motors and introduces a climber lock mechanism that acts as a safety interlock for the rest of the robot. Whenever the climber is activated, a lock flag is set that other subsystems can check before performing potentially unsafe actions. The subsystem supports both manual voltage control and closed-loop position control, allowing the climber to be engaged directly by the driver or commanded to specific positions. 
+      The LED subsystem provided visual feedback to drivers using a CANdle LED controller. Rather than requiring other subsystems to directly control the LEDs, it accepts a boolean supplier that continuously reports whether the robot has a note. Based on this state, the subsystem automatically switches between different LED animations to indicate whether the robot is loaded or empty. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Autonomous
+    </h3>
+
+    <p class = "text-white">
+      Last but not least, autonomous. We used a combination of Choreo and PathPlanner to create autonomous routines. Choreo generated optimized trajectories between points on the field, while PathPlanner allowed us to connect paths together and trigger commands such as shooting and intake at specific waypoints. The completed routines were loaded into a WPILib utility called a SendableChooser, which allowed drivers to select the desired autonomous routine from the dashboard before the match began. 
+      We could make a near limitless number of paths, but we had 10 competition autonomous options that encompassed every starting location. In addition, these paths were 90% consistent. Last thing I learned was to never have an auto routine run full speed before fully testing it. We forgot to do that once and the robot, with no bumpers, slammed into the wall (oops).
     </p>
 
   </div>
