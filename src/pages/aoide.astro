@@ -7,6 +7,7 @@ import Intake from "../components/aoide/Intake.astro"
 import Shooter from "../components/aoide/Shooter.astro"
 import Arm from "../components/aoide/Arm.astro"
 import Climber from "../components/aoide/Climber.astro"
+import AoideCad from "../components/aoide/AoideCad.astro"
 ---
 
 <Layout title="Aoide | George Lin">
@@ -44,12 +45,19 @@ import Climber from "../components/aoide/Climber.astro"
     <p class = "text-white">
       Aoide's build team consisted of around 10 students and 5 mentors. She was designed and built in around 7 weeks. She was programmed in about 3 weeks. She was expanded on through continuous iteration up until the final competiton through. 
       While the robot didn't perform to the teams' expectations (Qualifying for the World Championship), it was still the top performing robot in the Western Pennsylvania region according to Expected Points Added advanced metric and it won awards at both competitons it competed at. 
+      Big shoutout to all of Titans! Especially our programming lead, Logan. 
     </p>
     <br />
 
     <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
       Mechanical Notebook
     </h2>
+
+    <AoideCad />
+    <p class = "text-white">
+      Shoutout to my favorite captain and design lead, Ian. Check out his work here → <a href="https://cad.onshape.com/documents/4b0536849837463bc8dd6d70/w/77936c82651fbbd110c9dcf7/e/f9b38b3d9c12aa37272b3f60" class="text-blue-500 hover:underline">Aoide Onshape</a>
+    </p>
+    <br />
 
     <h3 class="mb-3 text-xl font-semibold text-white">
       Drivetrain
@@ -133,7 +141,7 @@ import Climber from "../components/aoide/Climber.astro"
     <br />
 
     <p class = "text-white">
-      This season I was mainly a programmer. However, having spent way too many hours at the workshop and practice field (peaking at around 60ish hours a week), I learned a lot about the mechanical process. From fabrication to assembly, I was eased into a lot of different roles and garnered a ton of nicknames: battery boy, bumper boy, Sewickley, etc... I wasn't an expert by any means, but I definitely developed the skils to be a big-time contributor in the following season. Shoutout Titans!
+      This season I was mainly a programmer. However, having spent way too many hours at the workshop and practice field (peaking at around 60ish hours a week), I learned a lot about the mechanical process. From fabrication to assembly, I was eased into a lot of different roles and garnered a ton of nicknames: battery boy, bumper boy, Sewickley, etc... I wasn't an expert by any means, but I definitely developed the skils to be a big-time contributor in the following season. 
     </p>
     <br />
 
@@ -147,7 +155,7 @@ import Climber from "../components/aoide/Climber.astro"
 
     <p class = "text-white">
       Aoide was coded in Java through IntelliJ and used the Shuffleboard dashboard. To improve maintainability and logging, we decided to use an IO layer architecture. Hardware interactions are isolated in IO classes, while subsystem classes contain control logic. This separation allowed for AdvantageKit logging, simulation capabilities, and simpler hardware migrations throughout the season. 
-      Throughout the season, I set up the baseline for these IO/subsystem classes. I created them, added functions to log data, carry out commands, etc.
+      Throughout the season, I set up the baseline for these IO/subsystem classes. I created them, added functions to log data, carry out commands, etc. Check out the repository here → <a href="https://github.com/TitaniumTitans/2024Crescendo" class="text-blue-500 hover:underline">Aoide Github</a>
     </p>
     <br />
 
@@ -168,6 +176,10 @@ import Climber from "../components/aoide/Climber.astro"
       Each state also applies its own motion rules, such as velocity limits and safety constraints, to ensure stable and collision-free movement between the independently-moving shoulder and the dependently-moving wrist. Lastly, a climber lock input acts as a safety interlock between subsystems, overriding normal state changes when the climber is active so the arm prioritizes climbing-related positions and avoids configurations that could interfere with the climber.
     </p>
     <br />
+    <video class="w-full border border-black" autoplay muted loop playsinline controls>
+    <source src="/videos/aoideAmp.mp4" type="video/mp4" />
+    </video>
+    <br />
 
     <p class = "text-white">
       Our "aimbot" system combined vision, drivetrain alignment, and rpm control to improve scoring consistency. Using Aoide's estimated field position, the aimbot command calculated the required wrist angle and flywheel speeds based on the distance to the speaker. The wrist angle was determined using a polynomial curve fit generated from successful shot data, allowing the robot to automatically adjust its trajectory from different locations on the field.
@@ -175,11 +187,19 @@ import Climber from "../components/aoide/Climber.astro"
       Before a note could be fired, the system verified three conditions: the flywheels had reached their target rpm, the drivetrain was aligned with the target within an acceptable angular error, and a TOF sensor confirmed that a note was present in the robot. All in all, this reduced wasted shots and increased accuracy. 
     </p>
     <br />
+    <video class="w-full border border-black" autoplay muted loop playsinline controls>
+    <source src="/videos/aoideShooter.mp4" type="video/mp4" />
+    </video>
+    <br />
 
     <p class = "text-white">
       The last two subsystems I'm especially proud of because I programmed these by myself. The climber managed both climber motors and introduces a climber lock mechanism that acts as a safety interlock for the rest of the robot. Whenever the climber is activated, a lock flag is set that other subsystems can check before performing potentially unsafe actions. The subsystem supports both manual voltage control and closed-loop position control, allowing the climber to be engaged directly by the driver or commanded to specific positions. 
       The LED subsystem provided visual feedback to drivers using a CANdle LED controller. Rather than requiring other subsystems to directly control the LEDs, it accepts a boolean supplier that continuously reports whether the robot has a note. Based on this state, the subsystem automatically switches between different LED animations to indicate whether the robot is loaded or empty. 
     </p>
+    <br />
+    <video class="w-full border border-black" autoplay muted loop playsinline controls>
+    <source src="/videos/climbTrap.mp4" type="video/mp4" />
+    </video>
     <br />
 
     <h3 class="mb-3 text-xl font-semibold text-white">
@@ -190,6 +210,11 @@ import Climber from "../components/aoide/Climber.astro"
       Last but not least, autonomous. We used a combination of Choreo and PathPlanner to create autonomous routines. Choreo generated optimized trajectories between points on the field, while PathPlanner allowed us to connect paths together and trigger commands such as shooting and intake at specific waypoints. The completed routines were loaded into a WPILib utility called a SendableChooser, which allowed drivers to select the desired autonomous routine from the dashboard before the match began. 
       We could make a near limitless number of paths, but we had 10 competition autonomous options that encompassed every starting location. In addition, these paths were 90% consistent. Last thing I learned was to never have an auto routine run full speed before fully testing it. We forgot to do that once and the robot, with no bumpers, slammed into the wall (oops).
     </p>
+    <br />
+
+    <video class="w-full border border-black" autoplay muted loop playsinline controls>
+    <source src="/videos/aoideAuto.mp4" type="video/mp4" />
+    </video>
 
   </div>
 </Layout>
