@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Bumpers from "../../assets/aoide/Bumpers.jpg";
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Bumpers}
+    alt="Broken Bumpers!"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>

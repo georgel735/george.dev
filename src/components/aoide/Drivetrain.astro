@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Drivetrain from "../../assets/aoide/drivetrain.png";
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Drivetrain}
+    alt="Aoide Drivetrain!"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>

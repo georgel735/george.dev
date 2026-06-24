@@ -1,6 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Aoide from "../components/aoide/Aoide.astro";
+import Bumpers from "../components/aoide/Bumpers.astro";
+import Drivetrain from "../components/aoide/Drivetrain.astro"
+import Intake from "../components/aoide/Intake.astro"
+import Shooter from "../components/aoide/Shooter.astro"
+import Arm from "../components/aoide/Arm.astro"
+import Climber from "../components/aoide/Climber.astro"
 ---
 
 <Layout title="Aoide | George Lin">
@@ -49,6 +55,9 @@ import Aoide from "../components/aoide/Aoide.astro";
       Drivetrain
     </h3>
 
+    <Drivetrain /> 
+    <br />
+
     <p class = "text-white">
       Aoide's drivetrain used L3 gear ratio Mk4i modules with Kraken X60s as drive motors and Falcon 500s as azimuth motors. 
       We originally had L3+ gear ratio but switched them out in favor of L3. We did this because we realized we would need more torque and acceleration as defense and collisions were a big part of this year's game. 
@@ -59,6 +68,9 @@ import Aoide from "../components/aoide/Aoide.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Intake
     </h3>
+
+    <Intake /> 
+    <br />
 
     <p class = "text-white">
         We had an Under-The-Bumper intake attached to the drivetrain frame. It had three deadaxle rollers, two polycarb with silicon tubing for initial contact and a third carbon fiber for centering, powered by a 1:1 kraken and driven through a belt-pulley system. 
@@ -71,6 +83,9 @@ import Aoide from "../components/aoide/Aoide.astro";
       Shooter
     </h3>
 
+    <Shooter />
+    <br />
+
     <p class = "text-white">
         Aoide's shooter had two sets of polycarb + silicon rollers powered by a Kraken with a 1:5:1 ratio. The shooter used two sets of 4" urethane wheels with 1/2 in of compression to create spin. Both sides were individually powered by a Falcon 500. 
         The shooter rotated around a MAXSpline and sprocket to shoot or pass at a variety of angles and position correctly to score into the amp. In late iterations, polycarb "horns" were added to the shooter to push open a trapdoor-like obstacle to enable scoring into the trap. 
@@ -80,6 +95,9 @@ import Aoide from "../components/aoide/Aoide.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Arm
     </h3>
+
+    <Arm />
+    <br />
 
     <p class = "text-white">
       The arm was a virtual four-bar, which featured two MAXSpline cross shafts to rotate the shoulder and wrist joints by chain and sprocket. 
@@ -92,6 +110,8 @@ import Aoide from "../components/aoide/Aoide.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Climber
     </h3>
+    <Climber />
+    <br />
 
     <p class = "text-white">
       The climber was a custom telescoping tube design. Each tube was powered by a Kraken with a 36:1 Max Planetary gearbox. The entire elevator system was driven through a spool and rope mechanism. As the spool winds up, climber extends and vice versa. 
@@ -108,6 +128,8 @@ import Aoide from "../components/aoide/Aoide.astro";
       Unlike many teams, we decided to do reversible bumpers. These were hell to make, and in a game where bumpers were broken left and right, we wouldn't be able to quickly make a spare set if they broke. Additionally, the elastic used to be able to flip the fabric got stuck in weird places, such as in the swerve drive, and costed us performance-wise. Everything that could break, broke. Including the aluminum brackets with the velcro to switch the bumper fabric. The bracket was bent so bad, we hammered it back into place between matches. I made too many sets of bumpers this year, and I would unfortunately continue to do that. 
       One more mechanical highlight or lowlight from this season was me snapping one of the shoulder chains. Wasn't a mechanical oversight more so a personal oversight. After changing a battery one time, I forgot to set the robot back down to a resting position and left it resting completely vertical with the shooter horizontal. By default, the driver sets the robot to stow position upon start. With the arm being a virtual four-bar design, the shooter ate into the arm chain while going to the stow position and snap. That never happened again, fortunately. 
     </p>
+    <br />
+    <Bumpers />
     <br />
 
     <p class = "text-white">
