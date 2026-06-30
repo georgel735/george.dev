@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Tethys from "../components/tethys/Tethys.astro";
+import Drivetrain from "../components/tethys/Drivetrain.astro";
+import AlgaeIntake from "../components/tethys/AlgaeIntake.astro";
+import Climber from "../components/tethys/Climber.astro";
+import CoralScoral from "../components/tethys/CoralScoral.astro";
 ---
 
 <Layout title="Tethys | George Lin">
@@ -21,6 +25,109 @@ import Tethys from "../components/tethys/Tethys.astro";
     <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
       Summary
     </h2>
+
+    <p class = "text-white">
+      For the 2025 FRC Reefscape season, the team had five seniors, me included, who all wanted to qualify for the World Championship. So when the season started, we all had a meeting to discuss how we wanted to attack this season. Long story short, we decided to build two robots this season, and Tethys was the first. 
+      I would like to preface by saying I was so against this decision but a lot of people were on board, so it happened anyways lol. While it all worked out in the end, there were moments where we thought we blew it by doing a complete rebuild. This was a pretty simple robot, so I had pretty big roles in the mechanical, electrical, and programming subteams. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Tethys built off of the kitbot for that season, and we modified it to be a proper support bot. We used a swerve drivetrain base, so we could plahy effective defense. We had an algae "knocker" to clear algae from the lower sections of the reef and an algae intake to score the algae into the processor. We also had a deep cage climber, and for this, we modified the our scoring mechanism to be able to rotate about a sprocket.
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Tethys was designed, built, and programmed in about 6 weeks. Part of the reason it took so long was that the climber was finicky, and near the end of the process, people began working on robot v2. She went through slight modifications up until our week 4 event, The Greater Pittsburgh Regional, where she competed on a spinoff team (that I captained), becoming a finalist for the first time in team history and possibly helping the main team win the Engineering Inspiration Award!
+    </p>
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Mechanical Notebook
+    </h2>
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Drivetrain
+    </h3>
+
+    <Drivetrain />
+    <br />
+
+    <p class = "text-white">
+      Tethys's drivetrain used L3 gear ratio Mk4i modules with Kraken X60s as drive motors and Falcon 500s as azimuth motors. 
+      Because we had to build two robots this year, we stuck with the Falcon 500/Azimuth and Kraken X60/Drive motor to ration our X60s. 
+      For this robot, we didn't need ultra-precise localization capabilities, so we just had one Arducam for April Tag detection. Along with that, each swerve module had a built-in encoder. Lastly, we had a Pigeon 2 IMU. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Coral Scoral
+    </h3>
+
+    <CoralScoral />
+    <br />
+
+    <p class = "text-white">
+      Our coral scoring end effector, which I named the Coral Scoral (a name the team eventually adopted!), was based heavily on the Kitbot coral end effector. It was powered by a Falcon 500 with a 3:1 Max Planetary gearbox and a Falcon adapter.
+      The biggest change we made was redesigning the mounting system so the front half of the end effector could rotate about a sprocket, while the back half was no longer fixed to the support structure. This gave us the space we needed to fit our climbing mechanism. The pivot was driven by a Kraken X60 with a 15:1 Max Planetary gearbox and a sprocket-and-chain reduction.
+      We also made a few smaller changes to improve performance. We updated the side plates to include our team logo, added a polycarbonate lip extension to the front so we could get closer to the trough for more consistent scoring, bent the back of the side polycarbonate panels inward to create more of a funnel for easier intaking, and added a metal bracket to the back of the bottom polycarbonate panel to help keep coral from falling out during intake.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Algae Knocker/Intake
+    </h3>
+
+    <AlgaeIntake />
+    <br />
+
+    <p class = "text-white">
+      We had two relatively simple algae mechanisms on the robot. The first was a knocker used to dislodge the lower algae from the reef. It was essentially an extension of the Coral Scoral, attached to the main roller assembly. The mechanism pivoted about a hex shaft but wasn't actuated by a motor or gearbox. Instead, we drove into the reef at the start of the match, causing the mechanism to rotate into position before resting on a standoff. The algae-removal wheels spun on a dead axle and were driven by the same belt-and-pulley system that powered the Coral Scoral rollers.
+      The algae intake used a slapdown design. The pivoting arm was actuated by a Kraken X60 through a custom gearbox, while the intake rollers were powered by a second Kraken X60 using a belt-and-pulley reduction. We added a limit switch to prevent the intake from over-rotating into the robot and used a curved polycarbonate guide spanning the width of the intake to keep the algae centered as it was collected.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Climber
+    </h3>
+
+    <Climber />
+    <br />
+
+    <p class = "text-white">
+      The climber was by far the most difficult mechanism to get working. The objective that year was to latch onto a cage with vertical bars and lift the robot completely off the ground. Our first design took inspiration from Team 118's retractable barb-and-winch climber. While the concept worked on their robot, it wasn't successful on ours because the forces acting on the climber weren't balanced, causing it to bind instead of lifting consistently.
+      We eventually scrapped that design and switched to a chain-and-sprocket driven climber. It still used a similar barb mechanism, but we added another set of curved polycarbonate plates to increase contact with the cage while climbing. Even then, the climber went through four iterations. We repeatedly changed the pivot and leverage geometry to minimize the effect of the robot's center of mass being offset from the climber.
+      Eventually, we got the climber working, although the robot still leaned heavily to one side while hanging. To compensate, we took advantage of the updated bumper rules and built bumpers with additional plywood on the lighter side to help counterbalance the robot during climbs. 
+      At our first competition, we also discovered that the official cages were much slicker than our practice field. We experimented with grip tape and glue but ultimately found that applying strips of VHB tape between matches gave us the most reliable grip.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Takeaways
+    </h3>
+
+    <p class = "text-white">
+      Like the previous year, bumpers ended up being a major annoyance. This time, though, it wasn't because they kept breaking, it was because the robot kept beaching on algae. Our first thought was that the issue came from switching to a smoother bumper fabric. Testing with our old fabric showed a slight improvement, but the robot still beached more often than we'd like.
+      Next, we suspected our larger bumpers were giving the algae more surface area to catch on, leading to inconsistent interactions. After testing both configurations, we decided to switch back to our original bumper design and fabric, as that combination gave us the most consistent performance.
+    </p>
+    <br />
+
+    <p class = "text-white">
+      For this robot, I took on a pretty big manufacturing role. I was still involved in programming, but there wasn't much to write about since most of the systems were pretty simple to code.
+      I helped fabricate a lot of the robot, using both the manual mill and CNC mill to machine different parts. I also did a fair amount of electrical work, although there isn't much to write home about. It was mostly power and CAN wiring, along with some soldering and using a heat gun for heat shrink.
+    </p>
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Programming Overview
+    </h2>
+
+    <p class = "text-white">
+      We used a very similar programming configuration with Tethys and Aoide. We programmed in Java, used an IO layer interface, created autonomous paths through choreo and splining through PathPlanner. 
+      Unlike Aoide though, there weren't any major subsystems with complex movements or commands that need to be talked about. We did switch to using Elastic this year as our dashboard because it offered much more customization than Shuffleboard while also reducing unnecessary NetworkTables bandwidth by only subscribing to the data it needed.
+      Shoutout Logan once again! You can check out the repository here → <a href="https://github.com/TitaniumTitans/2025Reefscape/tree/2ba7f387429bb4d96806a33ef4041ab4bc89d97b/tethys" class="text-blue-500 hover:underline">Tethys Github</a>
+    </p>
+    <br />
 
   </div>
 </Layout>
