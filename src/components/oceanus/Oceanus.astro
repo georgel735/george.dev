@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Oceanus from "../../assets/oceanus/oceanus.JPG";
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Oceanus}
+    alt="Oceanus at Competition"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>

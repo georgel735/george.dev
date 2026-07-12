@@ -9,6 +9,7 @@ import Card from "../components/Card.astro";
 import Hyperion from "../components/hyperion/Hyperion.astro";
 import Aoide from "../components/aoide/Aoide.astro";
 import Tethys from "../components/tethys/Tethys.astro"
+import Oceanus from "../components/oceanus/Oceanus.astro"
 ---
 
 <Layout title="Portfolio | George Lin">
@@ -46,12 +47,24 @@ import Tethys from "../components/tethys/Tethys.astro"
       </h2>
 
       <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Oceanus -->
+        <div>
+          <Card
+            href="oceanus"
+            title="Oceanus"
+            body="Team #4467's 2025 Reefscape v2 competition robot. Designed for a competitive edge and robustness. Smoky Mountain Regional Winner. FIRST World Championship Qualifier. #1 in Western PA."
+            tags="FRC, Software Engineering, Prototyping, Troubleshooting, Stupid Decisions"
+          >
+            <Oceanus />
+          </Card>
+        </div>
+
       <!-- Tethys -->
         <div>
           <Card
             href="tethys"
             title="Tethys"
-            body="Team #4467's 2025 Reefscape competition robot. Designed as a Kitbot+ robot with a quick build turnaround. Designed to be a niche defense robot with algae, L1, and deep climb capabilities."
+            body="Team #4467's 2025 Reefscape v1 competition robot. Designed as a Kitbot+ robot with a quick build turnaround. Designed to be a niche defense robot with algae, L1, and deep climb capabilities."
             tags="FRC, Software Engineering, Prototyping, Troubleshooting, Stupid Decisions"
           >
             <Tethys />

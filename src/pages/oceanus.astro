@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Oceanus from "../components/oceanus/Oceanus.astro";
+---
+
+<Layout title="Oceanus | George Lin">
+  <div class="max-w-screen-md m-auto p-4 my-4 antialiased">
+    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl text-white">
+      FIRST<br />
+      <span class="text-gradient">Oceanus</span>
+    </h1>
+
+    <Oceanus />
+
+    <p class="text-white">
+      <i>Oceanus is 4467's v2 robot for the 2025 FIRST Robotics Competition, Reefscape.</i>
+    </p>
+
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Summary
+    </h2>
+
+    <p class = "text-white">
+      Oceanus was the last robot I worked on. I was heavily involved in a lot of different systems. I led the development of a lot of different prototypes using our new laser cutter. 
+      While I was still heavily involved in programming, I took a bigger role on the mechanical and electrical subteams, where I assembled systems such as our climber and intake while also laying out the electrical system and wiring the robot. 
+      Beyond the technical aspects, I took on a big strategic role as well as mentoring newer members. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Oceanus was a "Frankenstein" robot in the sense that we took heavy inspiration from the best systems on other robots and adapted them to our own design. The overall archetype was inspired by team 1540. End effector and ground intake was inspired by team 694. The climber was inspired by team 6328. Lastly, the elevator was inspired by team 7312. While these were the final systems, we prototyped with many different ideas until we found the ones that worked best for us. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Oceanus was a much longer build process than typical, but that was by design. We wanted to make sure that we had a very robust robot that could be competitive against the best in the world with the capability to compete under any startegic gameplan. 
+      Oceanus was continuously iterated on up until the World Championship, where we were ranked as high as 5th after our 6th match, eventually finishing with a 7-3 record. With this robot, we also won the Smoky Mountain Regional as the 4th ranked team with a record of 13-3. Once again, Oceanus was the best performing robot in the Western Pennsylvania region according to EPA.
+    </p>
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Mechanical Notebook
+    </h2>
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Drivetrain
+    </h3>
+
+    <p class = "text-white">
+      Oceanus's drivetrain used L2 gear ratio with MK4N modules. Once again, we continued to use the Kraken X60 drive motors and Falcon 500 azimuth motor configuration as that was the most resource efficient and effective drivetrain config we used in the past. 
+      We used the MK4N modules because they were thinner and worked best for our package. We also changed to an L2 ratio because we no longer needed to play full field defense and wanted to be able to accelerate faster on our side of the field for quicker cycles. 
+      For Oceanus, we went back to having two cameras on the robot both facing in the direction of the end effector. This helped immensely with our localization when we scored at different sections on the reef. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Elevator
+    </h3>
+      
+    <p class = "text-white">
+      Oceanus's elevator was a one-stage elevator with a really tall carriage. The elevator itself was belt-driven, which allowed us to have a compact gearbox, in which we packaged two inline Kraken X60s at the bottom. We also implemented two constant force springs to give us extra pulling power to counteract the effect of gravity while extending. We also used long hex support rods to help with the stability of the elevator.
+      One change we made was to use a single-stage elevator instead of a two-stage elevator. This was because we didn't need the extra height to accomplish all objectives, and we wanted to save weight. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Intake
+    </h3>
+
+    <p class = "text-white">
+      Oceanus's intake was an OTB pivoting intake with three sets of rollers. The entire intake pivoted about a MAXSpline shaft driven by a Kraken X60 with a 5:1 Max Planetary Gearbox. The two sets of rollers that made initial contact were 2" squish wheels. The roller that helped push the coral into our hopper system were 1" sushi wheels. We protoyped with wheels until we found the configuration that allowed for the best mix of compliance and power. 
+      The rollers were driven through two Kraken X44s on a belt-pulley system. This intake allowed us to intake coral from the ground, and later, we found we could even use it to intake algae from the ground. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Climber/Hopper
+    </h3>
+
+    <p class = "text-white">
+      Oceanus's climber and hopper were two separate systems that were packaged together. The hopper system starts with the polycarbonate funnel. The funnel was a multi-hour process of using a heat bar to shape the right form for the coral to slide down into the hopper from both the ground intake and human player station. 
+      The climber arm was an exact replica of team 6328's climber arm. It used a steel hex shaft for the main drive shaft and had a Kraken X60 geared to 400:1. One thing we changed on the climber was that we custom milled aluminum input stage because the old ones kept breaking. 
+      We also attached two sets of sponsor panels to the bumpers on the climber side to help with both aesthetics and guiding the cage into our climber. 
+    </p>
+    <br />  
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      End Effector
+    </h3>
+
+    <p class = "text-white">
+      Oceanus's end effector featured an arm and a game piece manipulator. The arm runs on a MAXSpline deadaxle in which the arm can freely rotate about. The arm is driven by a Kraken X60 geared to 12:1 near the bottom of the carriage with a chain run to the big sprocket at the top of the carriage. 
+      The manipulator was powered by a Kraken X60 with three sets of rollers on the bottom and one at the top. The first two sets bottom sets and the one top set were 2" compliant wheels, and the last set was a mix of small solid wheels and two large solid wheels on the sides. The reason for this was we wanted better grip near the end for both the coral and algae. 
+      Two changes we made throughout the season were to add a hardstop on the bumper in front of the end effector to prevent coral from shooting out of the end effector when coming from the indexer. Also, we added a "diaper," which was a piece of fabric that would cover the bottom of the end effector as we found that sometimes coral would fall into there from freak accidents, and we couldn't get it out. 
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Takeaways
+    </h3>
+
+    <p class = "text-white">
+      Weight was a huge issue for us this year. We had to make a lot of decisions with weight in mind. For example, we originally planned to have a dedicated ground algae intake, but we had to scratch that idea because it was too heavy even after we completely stripped it down to basically just polycarb, some rollers, and a Kraken X44. 
+      There was not one subsystem where we didn't have to make weight compromises. Systems like the climber and elevator went through a lot of strain, and we had to develop solutions to minimize the damage of every competition. As this was our most successful and demanding season to date, this was essential. Also time and resources were a huge factor. Because we built two robots, we needed to make sure we had enough to build both robots to be competitive. 
+      This did mean a lot of us stayed until far too late into the night to make sure we were on schedule. This was an incredible final hurrah for me and every other senior on the team. While there were many times in the season many of us were frustrated, angry, and tired, we never gave up because as street poet and philosopher DJ Khaled once said, "<strong>Never stop. Never Settle.</strong>"
+    </p>
+    <br />
+
+  </div>
+</Layout>
+
+<style>
+  .image-text-container {
+    display: flex;
+    align-items: top;
+    gap: 16px; /* Adjust space between image and text */
+    margin-bottom: 2rem; /* Adds spacing before the back button */
+  }
+
+  .side-image {
+    flex: 1 1 auto; /* Ensures the image takes only as much space as needed */
+    max-width: 400px; /* Adjust as necessary for your design */
+    height: auto;
+  }
+
+  .side-text {
+    flex: 2 1 auto; /* Gives the text more space */
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+</style>
