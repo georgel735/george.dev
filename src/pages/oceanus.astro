@@ -1,6 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Oceanus from "../components/oceanus/Oceanus.astro";
+import OceanusCad from "../components/oceanus/OceanusCad.astro";
+import Drivetrain from "../components/oceanus/Drivetrain.astro";
+import Elevator from "../components/oceanus/Elevator.astro";
+import Intake from "../components/oceanus/Intake.astro";
+import Climber from "../components/oceanus/Climber.astro";
+import EndEffector from "../components/oceanus/EndEffector.astro";
 ---
 
 <Layout title="Oceanus | George Lin">
@@ -44,9 +50,17 @@ import Oceanus from "../components/oceanus/Oceanus.astro";
       Mechanical Notebook
     </h2>
 
+    <OceanusCad />
+    <p class = "text-white">
+      Once again, shoutout Ian. Check out his work here → <a href="https://cad.onshape.com/documents/9f76f689c624a7f5d57bf11f/w/dd7dab2e169ab044f577c523/e/7e9f98f53806d38ed97a466b" class="text-blue-500 hover:underline">Aoide Onshape</a>
+    </p>
+    <br />
+
     <h3 class="mb-3 text-xl font-semibold text-white">
       Drivetrain
     </h3>
+    <Drivetrain />
+    <br />
 
     <p class = "text-white">
       Oceanus's drivetrain used L2 gear ratio with MK4N modules. Once again, we continued to use the Kraken X60 drive motors and Falcon 500 azimuth motor configuration as that was the most resource efficient and effective drivetrain config we used in the past. 
@@ -58,6 +72,8 @@ import Oceanus from "../components/oceanus/Oceanus.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Elevator
     </h3>
+    <Elevator />
+    <br />
       
     <p class = "text-white">
       Oceanus's elevator was a one-stage elevator with a really tall carriage. The elevator itself was belt-driven, which allowed us to have a compact gearbox, in which we packaged two inline Kraken X60s at the bottom. We also implemented two constant force springs to give us extra pulling power to counteract the effect of gravity while extending. We also used long hex support rods to help with the stability of the elevator.
@@ -68,6 +84,8 @@ import Oceanus from "../components/oceanus/Oceanus.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Intake
     </h3>
+    <Intake />
+    <br />
 
     <p class = "text-white">
       Oceanus's intake was an OTB pivoting intake with three sets of rollers. The entire intake pivoted about a MAXSpline shaft driven by a Kraken X60 with a 5:1 Max Planetary Gearbox. The two sets of rollers that made initial contact were 2" squish wheels. The roller that helped push the coral into our hopper system were 1" sushi wheels. We protoyped with wheels until we found the configuration that allowed for the best mix of compliance and power. 
@@ -78,6 +96,8 @@ import Oceanus from "../components/oceanus/Oceanus.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       Climber/Hopper
     </h3>
+    <Climber />
+    <br />
 
     <p class = "text-white">
       Oceanus's climber and hopper were two separate systems that were packaged together. The hopper system starts with the polycarbonate funnel. The funnel was a multi-hour process of using a heat bar to shape the right form for the coral to slide down into the hopper from both the ground intake and human player station. 
@@ -89,6 +109,8 @@ import Oceanus from "../components/oceanus/Oceanus.astro";
     <h3 class="mb-3 text-xl font-semibold text-white">
       End Effector
     </h3>
+    <EndEffector />
+    <br />
 
     <p class = "text-white">
       Oceanus's end effector featured an arm and a game piece manipulator. The arm runs on a MAXSpline deadaxle in which the arm can freely rotate about. The arm is driven by a Kraken X60 geared to 12:1 near the bottom of the carriage with a chain run to the big sprocket at the top of the carriage. 
