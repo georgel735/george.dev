@@ -52,7 +52,7 @@ import EndEffector from "../components/oceanus/EndEffector.astro";
 
     <OceanusCad />
     <p class = "text-white">
-      Once again, shoutout Ian. Check out his work here → <a href="https://cad.onshape.com/documents/9f76f689c624a7f5d57bf11f/w/dd7dab2e169ab044f577c523/e/7e9f98f53806d38ed97a466b" class="text-blue-500 hover:underline">Aoide Onshape</a>
+      Once again, shoutout Ian. Check out his work here → <a href="https://cad.onshape.com/documents/9f76f689c624a7f5d57bf11f/w/dd7dab2e169ab044f577c523/e/7e9f98f53806d38ed97a466b" class="text-blue-500 hover:underline">Oceanus Onshape</a>
     </p>
     <br />
 
@@ -127,6 +127,95 @@ import EndEffector from "../components/oceanus/EndEffector.astro";
       Weight was a huge issue for us this year. We had to make a lot of decisions with weight in mind. For example, we originally planned to have a dedicated ground algae intake, but we had to scratch that idea because it was too heavy even after we completely stripped it down to basically just polycarb, some rollers, and a Kraken X44. 
       There was not one subsystem where we didn't have to make weight compromises. Systems like the climber and elevator went through a lot of strain, and we had to develop solutions to minimize the damage of every competition. As this was our most successful and demanding season to date, this was essential. Also time and resources were a huge factor. Because we built two robots, we needed to make sure we had enough to build both robots to be competitive. 
       This did mean a lot of us stayed until far too late into the night to make sure we were on schedule. This was an incredible final hurrah for me and every other senior on the team. While there were many times in the season many of us were frustrated, angry, and tired, we never gave up because as street poet and philosopher DJ Khaled once said, "<strong>Never stop. Never Settle.</strong>"
+    </p>
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Programming Documentation
+    </h2>
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      General Overview
+    </h3>
+
+    <p class = "text-white">
+      Oceanus's programming used the same architecture as our previous few robots. (IO/subsystem structure) We used a command-based architecture with a subsystem for each major system on the robot. We used IntelliJ IDEA as our IDE, Java as our language, Elastic as our dashboard, AdvantageKit for logging, and a combination of Choreo and Pathplanner for autonomous. 
+      One thing that was different was we used two separate controllers because we had so many different operations. The driver controller controls the robot's movement, intake/outtake, arm rollers, auto-alignment, and other driving-related functions. The operator controller controls the scoring mechanisms, including the elevator and arm positions, scoring level selection, algae removal, automatic intake, and the climber.
+      Check out the repository here → <a href="https://github.com/TitaniumTitans/2025Reefscape/tree/2ba7f387429bb4d96806a33ef4041ab4bc89d97b/oceanus" class="text-blue-500 hover:underline">Oceanus Github</a>
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Supersystem State Machine
+    </h3>
+
+    <p class="text-white">
+      Building on lessons learned from our 2024 robot, we designed Oceanus with a Supersystem that coordinates the elevator and arm. This prevents the mechanisms from entering unsafe positions or colliding with the robot or field elements during operation. Rather than controlling each mechanism independently, the robot uses predefined states that move both mechanisms together through safe, repeatable motions. The available states are:
+    </p>
+
+    <br />
+    
+    <ul class="text-white list-disc list-inside ml-4">
+      <li><strong>HOME</strong> – Returns the elevator and arm to their default stowed position.</li>
+      <li><strong>INTAKE</strong> – Positions the mechanisms to collect coral from the hopper.</li>
+      <li><strong>L2</strong>, <strong>L3</strong>, <strong>L4</strong> – Moves the elevator and arm to the correct scoring height for each reef level.</li>
+      <li><strong>ALGAE_L2</strong> and <strong>ALGAE_L3</strong> – Positions the robot to remove algae from the reef.</li>
+      <li><strong>BARGE</strong> – Moves the mechanisms into the preset barge-scoring configuration.</li>
+    </ul>
+
+    <br />
+
+    <p class="text-white">
+      Using preset states simplifies operation for the drivers while significantly reducing the risk of collisions between mechanisms. Instead of manually controlling the elevator and arm independently, the operator simply selects a desired state, and the Supersystem safely coordinates both mechanisms. During automatic scoring, the Supersystem also works alongside the drivetrain to prevent collisions with the reef. The robot first aligns itself with the selected scoring location before extending the elevator and arm, and for higher scoring levels it waits until the mechanisms have reached their target positions before completing the final approach. This coordinated sequence improves scoring consistency while helping protect the robot from accidental contact with the reef.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Automatic Alignment
+    </h3>
+
+    <p class="text-white">
+      To simplify scoring, the robot includes an automatic alignment feature that drives to the closest scoring location. The driver can choose whether to align to the left or right branch of the nearest reef. Once selected, the software determines the nearest matching branch and generates the commands needed to position the robot for scoring. By combining drivetrain odometry with AprilTag-based vision, the robot maintains an accurate estimate of its position throughout the alignment process.
+    </p>
+
+    <br />
+
+    <p class="text-white">
+      The operator first selects the desired scoring level (L2, L3, or L4). When the driver activates auto-alignment, the robot performs the following sequence:
+    </p>
+
+    <br />
+
+    <ul class="text-white list-disc list-inside ml-4">
+      <li>Finds the closest scoring location.</li>
+      <li>Drives to the selected left or right reef branch.</li>
+      <li>Moves the elevator and arm to the selected scoring position.</li>
+      <li>Waits until mechanisms reach their setpoints before completing the final approach.</li>
+      <li>Finishes aligned and ready to score.</li>
+    </ul>
+
+    <br />
+
+    <p class="text-white">
+      This coordinated process improves scoring consistency, reduces driver workload, and helps prevent collisions with the reef by ensuring the robot and its mechanisms are properly positioned before scoring.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Simulation
+    </h3>
+
+    <p class="text-white">
+      Throughout development, our programming lead Logan utilized a lot of simulations. There were many times where he couldn't get his hands on the physical robot and had to do work from home, or he wanted to test out a command in simulation before implementing it on the field. it was during these moments where tools, such as AdvantageScope and MapleSim, came in clutch. The simulation environment models the drivetrain and robot mechanisms, allowing the verification of subsystem behavior, autonomous routines, and command logic.
+    </p>
+    <br />
+
+    <h3 class="mb-3 text-xl font-semibold text-white">
+      Autonomous
+    </h3>
+
+    <p class="text-white">
+      Oceanus's autonomous routines were developed using a combination of Choreo and PathPlanner to create smooth, reliable paths while coordinating multiple robot subsystems. During intake sequences, the robot used sensor feedback to confirm that a game piece had been collected before continuing to the next action, making the routines more consistent than relying only on timed commands. After extensive tuning and testing, we achieved reliable 3.5-piece autonomous routines from both the left and right starting positions. We also developed additional autonomous routines that allowed the robot to remove algae from the reef and score it into the barge, giving the robot multiple ways to contribute during the autonomous period.
     </p>
     <br />
 
