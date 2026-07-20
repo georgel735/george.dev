@@ -8,8 +8,11 @@ import Card from "../components/Card.astro";
 // Project Components
 import Hyperion from "../components/hyperion/Hyperion.astro";
 import Aoide from "../components/aoide/Aoide.astro";
-import Tethys from "../components/tethys/Tethys.astro"
-import Oceanus from "../components/oceanus/Oceanus.astro"
+import Tethys from "../components/tethys/Tethys.astro";
+import Oceanus from "../components/oceanus/Oceanus.astro";
+import Geordle from "../components/geordle/Geordle.astro";
+import Helidos from "../components/swerve/Helidos.astro";
+import Drone from "../components/drone/Drone.astro";
 ---
 
 <Layout title="Portfolio | George Lin">
@@ -47,6 +50,43 @@ import Oceanus from "../components/oceanus/Oceanus.astro"
       </h2>
 
       <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <!-- Drone Camera -->
+        <div>
+          <Card
+            href="drone"
+            title="Drone Camera Detection"
+            body="A camera detection program coded in Python using a Tellopy Drone and the OpenCV Library. Detects faces and can also chase!"
+            tags="College, Drone, OpenCV, Facial Detection"
+          >
+            <Drone />
+          </Card>
+        </div>
+
+        <!-- Swerve Restoration -->
+        <div>
+          <Card
+            href="swerve"
+            title="Helidos Swerve Restoration Project"
+            body="Restoring the swerve drive of a past year's competition robot to use as a practice defense bot."
+            tags="FRC, Software Engineering, Restoration, Firmware, Tuning"
+          >
+            <Helidos />
+          </Card>
+        </div>
+
+        <!-- Geordle -->
+        <div>
+          <Card
+            href="geordle"
+            title="Geordle"
+            body="The create project I made for the 2023-2024 AP CSP class. Last minute Wordle remake coded in Python and CMU CS Academy."
+            tags="AP, Create Project, Unoptimized, Self-Taught, Self-Created"
+          >
+            <Geordle />
+          </Card>
+        </div>
+
       <!-- Oceanus -->
         <div>
           <Card

@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Helidos from "../../assets/swerve/helidos.jpeg";
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Helidos}
+    alt="Helidos flic"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>

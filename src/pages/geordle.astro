@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Geordle from "../components/geordle/Geordle.astro";
+---
+
+<Layout title="Geordle | George Lin">
+  <div class="max-w-screen-md m-auto p-4 my-4 antialiased">
+    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl text-white">
+      AP Computer Science Principles<br />
+      <span class="text-gradient">Geordle</span>
+    </h1>
+
+    <Geordle />
+
+    <p class="text-white">
+      <i>1-week create project in AP CSP.</i>
+    </p>
+
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Summary
+    </h2>
+
+    <p class="text-white">
+      This year was really interesting because our teacher had health complications early on in the year and took a leave of absence up until just about a month before our AP exam. Even then, he only came in sparingly, so I had to self-learn everything.
+      Funnily enough, I didn't know we had to make a create project until about a week before it was due, so this project was pretty rushed and not optimized at all. But it worked, so all's good. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+        Geordle is a Wordle-inspired game developed in Python using an event-driven graphics library. The program randomly selects one of twenty-six predefined five-letter words and allows the player six attempts to correctly guess the hidden word. 
+        The interface is built from graphical objects such as rectangles, labels, and groups, while keyboard and mouse event handlers manage user interaction. The game includes a start screen, an instructions page, and a gameplay grid that updates dynamically as letters are entered.
+    </p>
+    <br />
+
+    <p class = "text-white">
+        The project is organized around several core functions. onKeyPress() handles keyboard input, including typing letters, deleting characters with backspace, and submitting guesses with the Enter key. The isWord() function checks whether the player's guess exactly matches the target word, while isInWord() determines whether each letter should be colored green, gold, or gray based on Wordle's feedback rules. 
+        Two-dimensional lists store both the visual grid of tiles and the letter labels, allowing the program to track each guess independently. Event-driven callbacks separate the user interface from the game logic, making the code easier to follow than placing all functionality in a single loop.
+    </p>
+    <br />
+
+    <p class = "text-white">
+        One of the more challenging aspects of the implementation was correctly handling duplicate letters. The program counts the number of occurrences of each letter in the target word and compares that against the number of letters already marked as correct or partially correct before assigning additional gold tiles. This prevents situations where more copies of a letter are highlighted than actually exist in the hidden word.
+    </p>
+    <br />
+
+    <p class = "text-white">
+        Looking back, there are several improvements that would make the program more efficient and maintainable. The largest optimization would be separating the game state from the graphical user interface by creating classes such as Game, Board, and Tile rather than relying on numerous global variables. The current implementation repeatedly traverses the board and reconstructs strings, which could be simplified by storing guesses as lists or strings instead of rebuilding them after every key press. 
+        The word validation logic could also be rewritten using a two-pass algorithm that first marks exact matches and then processes misplaced letters, reducing nested loops and making duplicate-letter handling both cleaner and more accurate. Additionally, using Python dictionaries or collections.Counter would eliminate much of the manual counting logic currently required. 
+        Finally, expanding the word list into an external dictionary file, validating guesses against a complete English word list, and reducing repetitive UI code through loops or helper functions would significantly improve scalability and readability. These changes would make the code easier to extend while also reducing its overall complexity and improving runtime efficiency.
+    </p>
+    <br />
+    
+    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <source src="/videos/geordle.mp4" type="video/mp4" />
+    </video>
+    <br />
+
+    <p class = "text-white">
+        All in all, this was a pretty chill beginner project for me. I was a little limited by my IDE as it had weird library restrictions, but it was fun regardless. Check out the repository here → <a href="https://github.com/georgel735/Geordle/tree/main" class="text-blue-500 hover:underline">Geordle Github</a>
+    </p>
+
+  </div>
+</Layout>
+
+<style>
+  .image-text-container {
+    display: flex;
+    align-items: top;
+    gap: 16px; /* Adjust space between image and text */
+    margin-bottom: 2rem; /* Adds spacing before the back button */
+  }
+
+  .side-image {
+    flex: 1 1 auto; /* Ensures the image takes only as much space as needed */
+    max-width: 400px; /* Adjust as necessary for your design */
+    height: auto;
+  }
+
+  .side-text {
+    flex: 2 1 auto; /* Gives the text more space */
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+</style>

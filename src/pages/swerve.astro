@@ -1,0 +1,114 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Carousel from "../components/Carousel";
+import Helidos from "../components/swerve/Helidos.astro";
+import Elastic from "../components/swerve/Elastic.astro"
+import Offset from "../components/swerve/Offset.astro"
+---
+
+<Layout title="Swerve | George Lin">
+  <div class="max-w-screen-md m-auto p-4 my-4 antialiased">
+    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl text-white">
+      FIRST<br />
+      <span class="text-gradient">Helidos Swerve Restoration Project</span>
+    </h1>
+
+    <Helidos />
+
+    <p class="text-white">
+      <i>Helidos is 4467's robot for the 2023 FIRST Robotics Competition, Charged Up.</i>
+    </p>
+
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Summary
+    </h2>
+
+    <p class="text-white">
+      This was a quick project to get an older robot, Helidos, driving again to use as a practice bot. It was a three step process of updating the firmware, writing the code, and finally tuning it. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Updating the firmware was easy enough. I used the REV hardware client to update the firmware of the SPARKMAXes that controlled the swerve modules. 
+      The only problem I ran into was that some of them wouldn't show up on the software. To fix this, all the ones that didn't show up were manually force reset. 
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Much of the software architecture was adapted from the swerve drive code developed earlier that season for our competition robot, Tethys. Since both robots shared a similar command-based structure, I reused the existing subsystem framework but replaced the TalonFX hardware abstraction layer with a SPARK MAX implementation. 
+      This primarily involved creating a new IO layer that interfaced with REV motor controllers while preserving the higher-level drive logic, allowing the same kinematics, odometry, and control code to operate independently of the underlying motor hardware.
+      Check out the repository here → <a href="https://github.com/georgel735/Helidos-Defense-Bot/tree/main" class="text-blue-500 hover:underline">Helidos Swerve Github</a>
+    </p>
+    <br />
+
+    <p class = "text-white">
+      Tuning the swerve drive took the longest. I used a combination of CTRE Phoenix Tuner X and ELastic. Elastic was mainly just so I could see whether the wheels were all spinning in the right direction. Phoenix Tuner was to check the offsets given by the encoders and change values based off that.
+    </p> 
+    <br />
+
+    <Carousel client:load images={[
+      "/assets/images/swerve/img1.jpg",
+      "/assets/images/swerve/img2.jpg"
+    ]} />
+    <br/>
+
+  </div>
+</Layout>
+
+<style>
+  .gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .gallery-image {
+    max-width: 100%;
+    max-height: 500px;
+    margin: 0 auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  #gallery-image {
+    transition: opacity 0.3s ease-in-out;
+    opacity: 1;
+  }
+
+  .gallery-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem;
+    transition: background-color 0.3s ease;
+  }
+
+  #prev-button {
+    left: 3rem;
+  }
+
+  #next-button {
+    right: 3rem;
+  }
+
+  .gallery-nav-button:hover {
+    background-color: #e5e5e5;
+  }
+
+  .gallery-nav-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #0a62f0;
+  }
+
+  .gallery-nav-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #000;
+  }
+</style>

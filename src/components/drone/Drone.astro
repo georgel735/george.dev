@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import Drone from "../../assets/drone/drone.png";
+---
+
+<div>
+  <Image
+    class="project-image border border-black"
+    src={Drone}
+    alt="Tellopy Drone!"
+    densities={[1, 2, 3]}
+  />
+</div>
+
+<style>
+  .project-image {
+    width: 100%;
+    height: auto;
+  }
+</style>
