@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Drone from "../components/drone/Drone.astro";
+---
+
+<Layout title="Tello Drone Testing | George Lin">
+  <div class="max-w-screen-md m-auto p-4 my-4 antialiased">
+    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl text-white">
+      Autonomous Drone Research<br />
+      <span class="text-gradient">Tello Drone Testing</span>
+    </h1>
+
+    <Drone />
+
+    <p class="text-white">
+      <i>Computer vision and autonomous flight experimentation using the DJI Tello drone.</i>
+    </p>
+
+    <br />
+
+    <h2 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-3xl text-white">
+      Summary
+    </h2>
+
+    <p class="text-white">
+      This project started as an exploration into autonomous drone navigation using the DJI Tello platform for an introductory CS class at Vanderbilt. We were originally only tasked with making the drone fly in simple shapes. For example, it could fly in a square by moving forward and turning right four times in a loop. 
+      Once I got that working, I became more curious about the onboard camera, so I took the drone back to my dorm for the weekend and started experimenting with OpenCV to see what else I could get it to do.
+    </p>
+
+    <br />
+
+    <p class="text-white">
+      The project uses the tellopy library to communicate with the drone while OpenCV processes its live camera feed. I started by getting the drone to recognize faces using OpenCV's Haar cascade classifier, then used the location of the detected face to continuously send movement commands that kept it centered in the camera's view. It was far from perfect, but it was consistent enough in detecting my face that I had the idea to see if I could make it chase people off this facial detection library.
+    </p>
+
+    <br />
+
+    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <source src="/videos/cameraTesting.mp4" type="video/mp4" />
+    </video>
+
+    <p class="text-center text-white">
+      <i>Real-time face detection.</i>
+    </p>
+
+    <br />
+
+    <p class="text-white">
+      Getting the drone to actually follow someone turned out to be much harder than simply detecting faces and moving forward. Every camera frame had to be processed quickly enough for the drone to react before the target moved, and even small amounts of latency or movement could cause it to overshoot or lose track completely. I spent a lot of time tweaking the vision pipeline and experimenting with different parameters to make tracking as responsive as possible. In the end, it chased after my roommates laundry bag way more than my face for some reason. 
+    </p>
+
+    <br />
+
+    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <source src="/videos/facialChasing.mp4" type="video/mp4" />
+    </video>
+
+    <p class="text-center text-white">
+      <i>Autonomous face tracking and pursuit but it detects the wrong thing as a face.</i>
+    </p>
+
+    <br />
+
+    <p class="text-white">
+      The drone's camera wasn't particularly high quality, and things like changing lighting, motion blur, Wi-Fi latency, and even slight camera movement all made face detection much less reliable than I expected. I messed around with a lot of different things, such as grayscale conversion, lowering the video resolution, tuning the detection paramters, etc. In the end, the algorithm was still pretty limited, but it did chase my face one or twice, so that's a win. 
+    </p>
+
+    <br />
+
+    <p class="text-white">
+      This was a pretty fun and interesting weekend project. I definitely could've improved some things had I spent more time on it, such as incorporating a PID controller or using a more modern vision library than the one trained in OpenCv. 
+      With what was avilable to me and the camera specs, this was a pretty successful project, and you can check out the repository here → <a href="https://github.com/georgel735/Tellopy-Drone-Testing" class="text-blue-500 hover:underline"> Drone Repository </a>
+    </p>
+
+  </div>
+</Layout>
+
+<style>
+  .image-text-container {
+    display: flex;
+    align-items: top;
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+
+  .side-image {
+    flex: 1 1 auto;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .side-text {
+    flex: 2 1 auto;
+    font-size: 1.15rem;
+    color: #ccc;
+  }
+</style>
