@@ -2,8 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Carousel from "../components/Carousel";
 import Helidos from "../components/swerve/Helidos.astro";
-import Elastic from "../components/swerve/Elastic.astro"
-import Offset from "../components/swerve/Offset.astro"
+import BackButton from "../components/BackButton.astro";
 ---
 
 <Layout title="Swerve | George Lin">
@@ -52,7 +51,8 @@ import Offset from "../components/swerve/Offset.astro"
       "/assets/images/swerve/img1.jpg",
       "/assets/images/swerve/img2.jpg"
     ]} />
-    <br/>
+
+    <BackButton />
 
   </div>
 </Layout>

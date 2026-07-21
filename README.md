@@ -2,15 +2,15 @@
 
 A portfolio website with detailed technical writeups of my projects
 
-#### Watch it live here - [georgelin.dev](https://georgelin.dev/)
+#### Read it live here - [georgelin.dev](https://georgelin.dev/)
 
 <br>
 
-## This is how it looks
+## This is what it looks like
 
 <br>
 
-
+(./public/preview.jpeg)
 
 ## License
 
