@@ -10,7 +10,7 @@ A portfolio website with detailed technical writeups of my projects
 
 <br>
 
-(./public/preview.jpeg)
+![Portfolio Preview](./public/preview.jpeg)
 
 ## License
 
