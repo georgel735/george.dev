@@ -285,7 +285,10 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
           }
         });
       },
-      { threshold: 0.01 }
+      { 
+        threshold: 0.01,
+        rootMargin: "400px 0px",
+      }
     );
 
     videos.forEach((video) => observer.observe(video));

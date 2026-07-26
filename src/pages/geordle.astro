@@ -83,7 +83,10 @@ import Geordle from "../components/geordle/Geordle.astro";
           }
         });
       },
-      { threshold: 0.01 }
+      { 
+        threshold: 0.01,
+        rootMargin: "400px 0px",
+      }
     );
 
     videos.forEach((video) => observer.observe(video));
