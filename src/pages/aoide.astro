@@ -178,7 +178,7 @@ import AoideCad from "../components/aoide/AoideCad.astro"
       Each state also applies its own motion rules, such as velocity limits and safety constraints, to ensure stable and collision-free movement between the independently-moving shoulder and the dependently-moving wrist. Lastly, a climber lock input acts as a safety interlock between subsystems, overriding normal state changes when the climber is active so the arm prioritizes climbing-related positions and avoids configurations that could interfere with the climber.
     </p>
     <br />
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/aoideAmp.mp4" type="video/mp4" />
     </video>
     <br />
@@ -189,7 +189,7 @@ import AoideCad from "../components/aoide/AoideCad.astro"
       Before a note could be fired, the system verified three conditions: the flywheels had reached their target rpm, the drivetrain was aligned with the target within an acceptable angular error, and a TOF sensor confirmed that a note was present in the robot. All in all, this reduced wasted shots and increased accuracy. 
     </p>
     <br />
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/aoideShooter.mp4" type="video/mp4" />
     </video>
     <br />
@@ -200,7 +200,7 @@ import AoideCad from "../components/aoide/AoideCad.astro"
     </p>
     <br />
 
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/aoideAuto.mp4" type="video/mp4" />
     </video>
     <br />
@@ -215,7 +215,7 @@ import AoideCad from "../components/aoide/AoideCad.astro"
     </p>
     <br />
 
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/climbTrap.mp4" type="video/mp4"/>
     </video>
     <br />
@@ -224,7 +224,7 @@ import AoideCad from "../components/aoide/AoideCad.astro"
       Gallery
     </h3>
 
-    <Carousel client:load images={[
+    <Carousel client:visible images={[
       "/assets/images/aoide/img1.JPG",
       "/assets/images/aoide/img2.JPG",
       "/assets/images/aoide/img3.jpg",
@@ -240,6 +240,29 @@ import AoideCad from "../components/aoide/AoideCad.astro"
     <BackButton />
 
   </div>
+
+  <script>
+    const videos = document.querySelectorAll("video");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (!(video instanceof HTMLVideoElement)) return;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  </script>
 </Layout>
 
 <style>

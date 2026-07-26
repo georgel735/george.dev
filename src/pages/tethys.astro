@@ -135,7 +135,7 @@ import CoralScoral from "../components/tethys/CoralScoral.astro";
       Gallery
     </h3>
 
-    <Carousel client:load images={[
+    <Carousel client:visible images={[
       "/assets/images/tethys/img1.jpg",
       "/assets/images/tethys/img2.jpg",
       "/assets/images/tethys/img3.jpg",
@@ -150,6 +150,29 @@ import CoralScoral from "../components/tethys/CoralScoral.astro";
     <BackButton />
 
   </div>
+
+  <script>
+    const videos = document.querySelectorAll("video");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (!(video instanceof HTMLVideoElement)) return;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  </script>
 </Layout>
 
 <style>

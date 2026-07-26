@@ -36,7 +36,7 @@ import Drone from "../components/drone/Drone.astro";
 
     <br />
 
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/cameraTesting.mp4" type="video/mp4" />
     </video>
 
@@ -52,7 +52,7 @@ import Drone from "../components/drone/Drone.astro";
 
     <br />
 
-    <video class="block mx-auto border border-black" autoplay muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline>
     <source src="/videos/facialChasing.mp4" type="video/mp4" />
     </video>
 
@@ -76,6 +76,29 @@ import Drone from "../components/drone/Drone.astro";
     <BackButton />
 
   </div>
+  
+  <script>
+    const videos = document.querySelectorAll("video");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (!(video instanceof HTMLVideoElement)) return;
+
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videos.forEach((video) => observer.observe(video));
+  </script>
 </Layout>
 
 <style>
