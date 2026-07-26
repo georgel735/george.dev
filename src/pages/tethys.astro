@@ -151,28 +151,6 @@ import CoralScoral from "../components/tethys/CoralScoral.astro";
 
   </div>
 
-  <script>
-    const videos = document.querySelectorAll("video");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-
-          if (!(video instanceof HTMLVideoElement)) return;
-
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-
-    videos.forEach((video) => observer.observe(video));
-  </script>
 </Layout>
 
 <style>

@@ -53,7 +53,7 @@ import Geordle from "../components/geordle/Geordle.astro";
     </p>
     <br />
     
-    <video class="block mx-auto border border-black" muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline preload="metadata">
     <source src="/videos/geordle.mp4" type="video/mp4" />
     </video>
     <br />
@@ -83,7 +83,7 @@ import Geordle from "../components/geordle/Geordle.astro";
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.01 }
     );
 
     videos.forEach((video) => observer.observe(video));

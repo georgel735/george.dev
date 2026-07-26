@@ -152,7 +152,7 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
     </p>
     <br />
 
-    <video class="block mx-auto border border-black" muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline preload="metadata">
     <source src="/videos/oceanusClimb.mp4" type="video/mp4"/>
     </video>
     <br />
@@ -181,7 +181,7 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
       Using preset states simplifies operation for the drivers while significantly reducing the risk of collisions between mechanisms. Instead of manually controlling the elevator and arm independently, the operator simply selects a desired state, and the Supersystem safely coordinates both mechanisms. During automatic scoring, the Supersystem also works alongside the drivetrain to prevent collisions with the reef. The robot first aligns itself with the selected scoring location before extending the elevator and arm, and for higher scoring levels it waits until the mechanisms have reached their target positions before completing the final approach. This coordinated sequence improves scoring consistency while helping protect the robot from accidental contact with the reef.
     </p>
     <br />
-    <video class="block mx-auto border border-black" muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline preload="metadata">
     <source src="/videos/oceanusAlgae.mp4" type="video/mp4"/>
     </video>
     <br />
@@ -217,7 +217,7 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
     </p>
     <br />
 
-    <video class="block mx-auto border border-black" muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline preload="metadata">
     <source src="/videos/oceanusL4.mp4" type="video/mp4"/>
     </video>
     <br />
@@ -240,7 +240,7 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
     </p>
     <br />
 
-    <video class="block mx-auto border border-black" muted loop playsinline>
+    <video class="block mx-auto border border-black" muted loop playsinline preload="metadata">
     <source src="/videos/oceanusAuto.mp4" type="video/mp4"/>
     </video>
     <br />
@@ -285,7 +285,7 @@ import OceanusWeight from "../components/oceanus/OceanusWeight.astro";
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.01 }
     );
 
     videos.forEach((video) => observer.observe(video));
