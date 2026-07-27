@@ -9,6 +9,7 @@ const siteDescription = "Technical documentation of the things I make.";
 const siteTitle = "georgelin.dev";
 const siteURL = "https://www.georgelin.dev";
 import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from "@vercel/speed-insights/astro"
 ---
 
 <!doctype html>
@@ -214,5 +215,6 @@ import Analytics from '@vercel/analytics/astro'
       }
     </style>
     <Analytics/>
+    <SpeedInsights/>
   </body>
 </html>
