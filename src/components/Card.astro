@@ -13,7 +13,7 @@ const { title, body, tags, live, href, image, imageAlt } = Astro.props;
 const hasMedia = Astro.slots.has('default') || image;
 ---
 
-<div class="border-2 border-gray-700 border-zinc-900 flex flex-col h-full">
+<div class="project-card border-2 border-gray-700 border-zinc-900 flex flex-col h-full">
   {hasMedia && (
     <div class="card-image-wrapper">
       {image ? (
@@ -156,6 +156,12 @@ const hasMedia = Astro.slots.has('default') || image;
     color: white;
     opacity: 1;
   }
+  
+  .project-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+  }
+
   h2 {
     margin: 0;
     font-size: 1.25rem;
