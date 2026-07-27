@@ -247,31 +247,6 @@ import AoideCad from "../components/aoide/AoideCad.astro"
 
   </div>
 
-  <script>
-    const videos = document.querySelectorAll("video");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target;
-
-          if (!(video instanceof HTMLVideoElement)) return;
-
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { 
-        threshold: 0.01,
-        rootMargin: "400px 0px",
-      }
-    );
-
-    videos.forEach((video) => observer.observe(video));
-  </script>
 </Layout>
 
 <style>
